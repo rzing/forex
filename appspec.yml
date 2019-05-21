@@ -1,0 +1,48 @@
+#REF: https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html
+
+version: 0.0
+os: linux
+# os: windows
+
+# Specify multiple "source" and "destination" pairs if you want to copy
+# from multiple sources or to multiple destinations.
+files:
+  - source: build/libs/
+    destination: /var/lib/tomcat/deploy
+
+# For deployments to Amazon Linux, Ubuntu Server, or RHEL instances,
+# you can specify a "permissions" section here that describes special permissions
+# to apply to the files in the "files" section as they are being copied over to
+# the Amazon EC2 instance.
+permissions:
+  - object: /var/lib/tomcat/webapps
+    pattern: "*.war"
+    # except:
+    owner: root
+    group: tomcat
+    mode: 644
+    type:
+      - file
+      # - directory
+# Hooks for deployment lifecycle events
+hooks:
+  ApplicationStop:
+    - location: scripts/stoptomcat.sh
+      timeout: 300
+      runas: root
+  BeforeInstall:
+    - location: scripts/removeallwebapps.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: scripts/listallwebapps.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/starttomcat.sh
+      timeout: 300
+      runas: root
+  ValidateService:
+    - location: scripts/tomcatverify.sh
+      timeout: 300
+      runas: root

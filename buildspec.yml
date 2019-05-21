@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Entering "Install Phase" ...
+      - echo Nothing to do in "Install Phase"
+  pre_build:
+    commands:
+      - echo Entering "Pre_Build Phase" ...
+      - echo Nothing to do in "Pre_Build Phase"
+  build:
+    commands:
+      - echo Entering "Build Phase" ...
+      - echo Build started on `date`
+      - gradle build
+    finally:
+      - echo This always runs even if the build command fails
+  post_build:
+    commands:
+      - echo Entering "Post_Build Phase" ...
+      - echo Nothing to do in "Post_Build Phase"
+artifacts:
+  files:
+    - 'build/libs/*.jar'
+    - 'build/libs/*.war'
+    - 'scripts/*.sh'
+    - 'appspec.yml'
+
