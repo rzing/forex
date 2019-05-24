@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "48f3123d-f0d8-4d14-b8a8-ab21709d5f48",
+		"name": "Forex Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Forex EUR to INR",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7c786e1c-17a3-441c-a2a3-9db47e11117a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Correct conversionMultiple\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.conversionMultiple).to.eql(77.78829109616622);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{server}}:{{port}}/forex/EUR/to/INR",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"forex",
+						"EUR",
+						"to",
+						"INR"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forex USD to INR",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cbc8c894-0b3b-43cf-859c-59c250a62901",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Correct conversionMultiple\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.conversionMultiple).to.eql(69.2196336878);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{server}}:{{port}}/forex/USD/to/INR",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"forex",
+						"USD",
+						"to",
+						"INR"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forex EUR to ABC - ERROR",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "88f5cb07-1d50-4c33-bc37-7174a47d7daf",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{server}}:{{port}}/forex/EUR/to/ABC",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"forex",
+						"EUR",
+						"to",
+						"ABC"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forex CAD to INR",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "db791067-ea0c-4b68-8611-3c1abb3a8327",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{server}}:{{port}}/forex/CAD/to/INR",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"forex",
+						"CAD",
+						"to",
+						"INR"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
